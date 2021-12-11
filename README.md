@@ -27,6 +27,8 @@ Turbo/Auto-claim list of username(s).
 
 2) It will go through the list of usernames in file **usernames.txt** and will see if the name is available.
 
+<img src="https://i.imgur.com/gnADczc.png" width="30%" />
+
 ## Second Mode (Swapper):
 Mainly used to swap a username over to another account. I'm working on improving this.
 
