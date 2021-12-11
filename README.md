@@ -17,7 +17,7 @@ Turbo/Auto-claim list of username(s).
 
 * I recommend buying fresh accounts and using around 50+ accounts.
 * Do not use more threads than accounts
-* Good elay per request is 3
+* Good delay per request is 3
 * Good timeout per request is 5
 
 1) Put your login accounts in file **accounts.txt** in USERNAME:PASSWORD format, and choose option 3 before continuing.
