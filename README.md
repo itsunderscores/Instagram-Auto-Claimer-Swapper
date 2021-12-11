@@ -10,6 +10,8 @@ The program has three different settings. All which are currently functioning as
 Are you brain dead and need help?
 underscores#0001
 
+Proof of concept: https://www.youtube.com/watch?v=Kig-mcNS_Z0
+
 ## Features
 - Multi-threading
 - Multiple Accounts
