@@ -7,6 +7,9 @@ The program has three different settings. All which are currently functioning as
 
 * **Replace proxy on line 51 with your own**
 
+Are you brain dead and need help?
+underscores#0001
+
 ## Features
 - Multi-threading
 - Multiple Accounts
