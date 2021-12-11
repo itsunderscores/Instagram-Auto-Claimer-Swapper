@@ -1,2 +1,30 @@
-# Instagram-Auto-Claimer-Swapper
-Instagram Claimer / Swapper / Turbo - Proxy Supported - Multithreading
+# Instagram Turbo / Auto Claimer / Swapper
+Use this at your own descretion. I've only used this on test accounts and nothing high-end. Although, it should get the job done.
+
+Proxies are required for this to work properly. **Rotating and Residential are recommended.**
+
+The program has three different settings. All which are currently functioning as of 12/11/2021. Before swapping a high-end account, ensure it is working with throwaway accounts first.
+
+* **Replace proxy on line 51 with your own**
+
+## Features
+- Multi-threading
+- Multiple Accounts
+- Proxy Supported
+
+## First Mode (Turbo):
+Turbo/Auto-claim list of username(s).
+
+1) Put your login accounts in file **accounts.txt** in USERNAME:PASSWORD format, and choose option 3 before continuing.
+
+2) It will go through the list of usernames in file **usernames.txt** and will see if the name is available.
+
+## Second Mode (Swapper):
+Mainly used to swap a username over to another account. I'm working on improving this.
+
+It will ask for the login of the first account that will be releasing the username. Then it'll ask for the second account login that will claim the username. Once it has verified that both accounts are working and eligble to transfer, it will swap them.
+
+## Third Mode (Login to accounts):
+Grab required cookies from accounts in **accounts.txt** (This is required for the first mode.)
+
+<img src="https://i.imgur.com/Du9AwCD.png" width="30%" />
