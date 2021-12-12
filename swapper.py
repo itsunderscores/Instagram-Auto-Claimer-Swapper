@@ -1,8 +1,16 @@
+#from selenium import webdriver
+#from selenium.webdriver.firefox.options import Options
+#from selenium.webdriver.common.proxy import Proxy
+#from selenium.webdriver.common.by import By
+#from selenium.webdriver.support import expected_conditions as EC
+#from selenium.webdriver.support.ui import WebDriverWait
+#from seleniumwire import webdriver
 import requests
 import os, sys, time
 import os.path
 import time as t
 import threading
+#import getpass
 import urllib.request
 import urllib.parse
 import pickle
@@ -40,7 +48,7 @@ def header():
 	print(WHITE+"-------------------------------------------------------"+YELLOW)
 
 proxies = {
-    "http": "ENTER YOUR PROXY HERE"
+    "http": "YOUR PROXY GOES HERE"
 }
 
 def unescape(in_str):
@@ -402,7 +410,16 @@ def verifyaccount(username, type):
 		return False
 
 # Changing the username
-def changeusername1(username, newusername):
+claimed = []
+def changeusername1(username, newusername, type):
+
+	# Delays one second before changing the @, so the claimer has a headstart!
+	if type == "1":
+		time.sleep(1)
+	else:
+		time.sleep(0)
+		#print("")
+
 	try:
 		if username == first_username[0]:
 			csrf = first_csrf[0]
@@ -414,7 +431,7 @@ def changeusername1(username, newusername):
 				cookie = second_cookie[0]
 				builtstring = second_array[0]
 	except:
-		print("[>] Something did not match with function: changeusername1")
+		print(CRED+"[>] Something did not match with function: changeusername1")
 
 	postheaders={
 		"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0",
@@ -433,11 +450,22 @@ def changeusername1(username, newusername):
 		"TE": "trailers",
 	}
 
-	print("[>] Swapping " + username + " to " + newusername)
+	if type == "1":
+		print(YELLOW+"[>] Releasing " + username + " to " + newusername)
+	else:
+		print(YELLOW+"[>] Swapping " + username + " to " + newusername)
 
 	fixstring = builtstring.replace("&username=" + username, "&username=" + newusername)
 
 	while True:
+
+		try:
+			if claimed[0] == "1":
+				print(CGREEN + "[>] Closed because we swapped " + fileName + " successfully.")
+				return;
+		except:
+			pass
+
 		url = "https://www.instagram.com/accounts/edit/"
 		send = requests.post(url, data = fixstring, headers=postheaders, proxies=proxies)
 		second_response = str(send.content)
@@ -458,6 +486,7 @@ def changeusername1(username, newusername):
 		try:
 			if data['status'] == "ok":
 				print(CGREEN + "[>] Successfully changed name to " + newusername)
+				sniped.append("1")
 				break;
 			else:
 				if data['message']['errors'][0] == "This username isn't available. Please try another.":
@@ -499,7 +528,7 @@ def swapper():
 				print(CRED+"[>] Error #2 with logging in to the first account. Let's try again.")
 		while True:
 			try: 
-				username_2 = input(YELLOW + "[>] Enter username:pass to the second account that will be claiming the username: ")
+				username_2 = input(YELLOW + "\n[>] Enter username:pass to the second account that will be claiming the username: ")
 				username2 = username_2.split(':')[0]
 				password2 = username_2.split(':')[1]
 				logintofirst = login(username2, password2)
@@ -517,7 +546,7 @@ def swapper():
 	times = 1
 	while True:
 		if times == 1:
-			print(CGREEN + "[>] Checking first account.")
+			print(YELLOW + "[>] Checking first account.")
 			checkfirstaccount = verifyaccount(firstaccountusername, times)
 			if checkfirstaccount == True:
 				firstaccount = True
@@ -525,7 +554,7 @@ def swapper():
 				firstaccount = False
 		else:
 			if times == 2:
-				print(CGREEN + "[>] Checking second account.")
+				print(YELLOW + "[>] Checking second account.")
 				checksecondaccount = verifyaccount(secondaccountusername, times)
 				if checksecondaccount == True:
 					secondaccount = True
@@ -536,10 +565,23 @@ def swapper():
 		times += 1
 
 	if firstaccount == True and secondaccount == True:
-		print("[>] Both accounts are good to use.")
+		print(CGREEN+"[>] Both accounts are good to use.")
 		print("")
-		changeusername1(firstaccountusername, randomusername)
-		changeusername1(secondaccountusername, firstaccountusername)
+
+		# It will sleep for 1 second before releasing the username so claimer can get a headstart!
+		for x in range(int(1)):
+			th = threading.Thread(target=changeusername1, args=(firstaccountusername, randomusername, "1"))
+			th.start()
+		th.join()
+
+		# Multi thread 
+		for x in range(int(3)):
+			th = threading.Thread(target=changeusername1, args=(secondaccountusername, firstaccountusername, "2"))
+			th.start()
+		th.join()
+
+		#changeusername1(secondaccountusername, firstaccountusername, "2")
+
 	else:
 		print(CRED+"[>] One of the accounts are not good to use.")
 		print(YELLOW+"[>] First account ready: " + firstaccount)
