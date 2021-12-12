@@ -11,7 +11,7 @@ Are you brain dead and need help?
 underscores#0001
 
 # Videos
-Turbo Example: https://www.youtube.com/watch?v=Kig-mcNS_Z0
+Auto Claimer/Turbo Example: https://www.youtube.com/watch?v=Kig-mcNS_Z0
 
 Swapper Example: https://www.youtube.com/watch?v=OhSDkKA_HAw
 
@@ -22,7 +22,7 @@ Swapper Example: https://www.youtube.com/watch?v=OhSDkKA_HAw
 
 Tested and working on Python 3.9.9
 
-## First Mode (Turbo):
+## First Mode (Auto Claimer/Turbo):
 Turbo/Auto-claim list of username(s).
 
 * I recommend buying fresh accounts and using around 50+ accounts.
