@@ -83,8 +83,6 @@ def logtofile(file, text):
 # LOGIN FUNCTIONS #
 ###################
 
-# Detect if account is locked!?
-
 # New Login
 def login(username, password):
 	uid = uuid4()
