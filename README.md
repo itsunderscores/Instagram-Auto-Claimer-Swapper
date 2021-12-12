@@ -10,7 +10,9 @@ The program has three different settings. All which are currently functioning as
 Are you brain dead and need help?
 underscores#0001
 
-Proof of concept: https://www.youtube.com/watch?v=Kig-mcNS_Z0
+Turbo Example: https://www.youtube.com/watch?v=Kig-mcNS_Z0
+
+Swapper Example: https://www.youtube.com/watch?v=qj0cfI3sktQ
 
 Tested and working on Python 3.9.9
 
