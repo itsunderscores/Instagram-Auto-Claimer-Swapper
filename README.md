@@ -7,8 +7,9 @@ The program has three different settings. All which are currently functioning as
 
 * **Replace proxy on line 51 with your own**
 
-Are you brain dead and need help?
-underscores#0001
+Are you brain dead and need help? underscores#0001
+
+If you need helping swapping or cannot get this **simple** program working. Feel free to contact me.
 
 # Videos
 Auto Claimer/Turbo Example: https://www.youtube.com/watch?v=Kig-mcNS_Z0
