@@ -36,7 +36,7 @@ Turbo/Auto-claim list of username(s).
 <img src="https://i.imgur.com/gnADczc.png" width="30%" />
 
 ## Second Mode (Swapper):
-Mainly used to swap a username over to another account. I'm working on improving this.
+Mainly used to swap a username over to another account. **Updated to claim faster**
 
 It will ask for the login of the first account that will be releasing the username. Then it'll ask for the second account login that will claim the username. Once it has verified that both accounts are working and eligble to transfer, it will swap them.
 
