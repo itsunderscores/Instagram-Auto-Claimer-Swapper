@@ -12,6 +12,8 @@ underscores#0001
 
 Proof of concept: https://www.youtube.com/watch?v=Kig-mcNS_Z0
 
+Tested and working on Python 3.9.9
+
 ## Features
 - Multi-threading
 - Multiple Accounts
