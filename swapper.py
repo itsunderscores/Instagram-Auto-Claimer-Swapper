@@ -240,7 +240,7 @@ def loadContents(fileName, delay, timeout):
 									snipeready = False
 								else:
 									if blah == '\\nInstagram\\n':
-										print(GREEN+"[>] " + username + " is available, sniping!")
+										print(GREEN+"[>] " + username + " is available, claiming.")
 										snipeready = True
 									else:
 										if blah == '\\nLogin \\xe2\\x80\\xa2 Instagram\\n':
