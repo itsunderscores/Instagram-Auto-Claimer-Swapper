@@ -10,16 +10,17 @@ The program has three different settings. All which are currently functioning as
 Are you brain dead and need help?
 underscores#0001
 
+# Videos
 Turbo Example: https://www.youtube.com/watch?v=Kig-mcNS_Z0
 
 Swapper Example: https://www.youtube.com/watch?v=qj0cfI3sktQ
-
-Tested and working on Python 3.9.9
 
 ## Features
 - Multi-threading
 - Multiple Accounts
 - Proxy Supported
+
+Tested and working on Python 3.9.9
 
 ## First Mode (Turbo):
 Turbo/Auto-claim list of username(s).
