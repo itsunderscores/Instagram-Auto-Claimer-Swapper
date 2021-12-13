@@ -1,5 +1,5 @@
 # Instagram Turbo / Auto Claimer / Swapper
-For the love of god, please don't sell this. IT'S FREE so keep it that way. If you genuinely sell this, you're a piece of shit.
+For fuck sakes, please don't sell this. IT'S FREE so keep it that way. If you genuinely sell this, you're a piece of shit.
 
 Use this at your own descretion. I've only used this on test accounts and nothing high-end. Although, it should get the job done.
 
