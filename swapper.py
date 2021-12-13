@@ -1,8 +1,16 @@
+#from selenium import webdriver
+#from selenium.webdriver.firefox.options import Options
+#from selenium.webdriver.common.proxy import Proxy
+#from selenium.webdriver.common.by import By
+#from selenium.webdriver.support import expected_conditions as EC
+#from selenium.webdriver.support.ui import WebDriverWait
+#from seleniumwire import webdriver
 import requests
 import os, sys, time
 import os.path
 import time as t
 import threading
+#import getpass
 import urllib.request
 import urllib.parse
 import pickle
@@ -85,7 +93,6 @@ def logtofile(file, text):
 # LOGIN FUNCTIONS #
 ###################
 
-
 # New Login
 def login(username, password):
 	uid = uuid4()
@@ -117,18 +124,57 @@ def login(username, password):
 	}
 
 	response = requests.post(url=url, headers=headers, data=data, proxies=proxies)
+
 	cookies = response.cookies
 
+	bad = False
+
 	loadjson = json.loads(response.text)
-	if loadjson["logged_in_user"]["username"] == username:
-		print(CGREEN+"[>] Successfully logged in: " + username)
-		logtofile("cookies/" + username + ".txt", cookies)
-		return "1"
-	else:
+	try:
+		if username == loadjson["logged_in_user"]["username"]:
+			print(CGREEN+"[>] Successfully logged in: " + username)
+			logtofile("cookies/" + username + ".txt", cookies)
+			return "1"
+	except:
+		pass
+
+	try:
 		if loadjson["logged_in_user"]["is_active"] == False:
 			print(YELLOW+"[!] Account is most likely locked. Cannot sign in: " + username)
-		else:
+			bad = True
+			return "0"
+	except:
+		pass
+
+	try:
+		if "ip_block" == loadjson["error_type"]:
+			print(CRED+ "[!] This IP has been blocked.")
+			bad = True
+			return "0"
+	except:
+		pass
+
+	try:
+		if loadjson["error_type"] == "rate_limit_error":
+			print(CRED+ "[!] Rate limited.")
+			bad = True
+			return "0"
+	except:
+		pass
+	
+	try:
+		if loadjson["message"] == "The username you entered doesn't appear to belong to an account. Please check your username and try again.":
+			print(CRED+ "[!] Username does not belong to an account.")
+			bad = True
+			return "0"
+	except:
+		pass
+
+	try:
+		if bad == False:
 			print(CRED+"[!] Failed to login: " + username + " (" + response.text + ")")
+	except:
+		pass
 
 # Signs into the accounts first to grab headers
 def logintotheaccounts():
@@ -136,10 +182,7 @@ def logintotheaccounts():
 		for line in f:
 			username = line.split(':')[0]
 			password = line.split(':')[1]
-			try:
-				login(username, password)
-			except:
-				print(CRED + "[>] Something went wrong signing you in.")
+			login(username, password)
 
 #######################################################################
 
