@@ -234,7 +234,6 @@ def loadContents(fileName, delay, timeout):
 						pass
 
 					try:
-						# FIX THIS , FINE A BETTER WAY TO SEE IF AN ACCOUNT IS UNAVAILABLE!!!!!
 						url2 = "https://www.instagram.com/" + username + "/"
 						grab2 = requests.get(url2, headers=getheaders, timeout=timeout, proxies=proxies)
 						first_response2 = grab2.content
