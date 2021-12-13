@@ -40,7 +40,7 @@ def header():
 	print(WHITE+"-------------------------------------------------------"+YELLOW)
 
 proxies = {
-    "http": "YOUR PROXY GOES HERE"
+    "http": "YOUR PROXY WILL GO HERE!"
 }
 
 def unescape(in_str):
@@ -82,6 +82,7 @@ def logtofile(file, text):
 ###################
 # LOGIN FUNCTIONS #
 ###################
+
 
 # New Login
 def login(username, password):
@@ -147,12 +148,15 @@ def getrandomcookie():
 
 # Multi-threaded Turbo
 sniped = []
+sniped_username = []
 def loadContents(fileName, delay, timeout):
+
 	while True:
-		with open("cookies/" + getrandomcookie(), 'r') as f:
+		mycookie = getrandomcookie()
+		with open("cookies/" + mycookie, 'r') as f:
 			try:
 				if sniped[0] == "1":
-					print(CGREEN + "[>] Closed because we claimed " + fileName + " successfully.")
+					print(CGREEN + "[>] Closed because we claimed " + sniped_username[0] + " successfully.")
 					return;
 			except:
 				pass
@@ -209,99 +213,117 @@ def loadContents(fileName, delay, timeout):
 		firstname = ""
 		biography = ""
 
-		with open('usernames.txt', 'r') as accountfile:
-			for username in accountfile:
-				username = username.strip()
-				username = username.replace("\n", "")
+		while True:
+			try:
+				if sniped[0] == "1":
+					print(CGREEN + "[>] Closed because we claimed " + sniped_username[0] + " successfully.")
+					return;
+			except:
+				pass
 
-				try:
-					# FIX THIS , FINE A BETTER WAY TO SEE IF AN ACCOUNT IS UNAVAILABLE!!!!!
-					url2 = "https://www.instagram.com/" + username + "/"
-					grab2 = requests.get(url2, headers=getheaders, timeout=timeout, proxies=proxies)
-					first_response2 = grab2.content
+			with open('usernames.txt', 'r') as accountfile:
+				for username in accountfile:
+					username = username.strip()
+					username = username.replace("\n", "")
 
-					blah = find_between(str(first_response2), str("<title>"), str("</title>"))
-					gay = find_between(str(first_response2), str("\"alternateName\":\""), str("\""))
+					try:
+						if sniped[0] == "1":
+							print(CGREEN + "[>] Closed because we claimed " + sniped_username + " successfully.")
+							return;
+					except:
+						pass
 
-					if gay == "@" + username:
-						print(YELLOW+"[>] " + username + " is not available. #1")
-						snipeready = False
-					else:
-						if "Posts - See Instagram photos and videos from" in str(first_response2):
-							print(YELLOW+"[>] " + username + " is not available. #2")
+					try:
+						# FIX THIS , FINE A BETTER WAY TO SEE IF AN ACCOUNT IS UNAVAILABLE!!!!!
+						url2 = "https://www.instagram.com/" + username + "/"
+						grab2 = requests.get(url2, headers=getheaders, timeout=timeout, proxies=proxies)
+						first_response2 = grab2.content
+
+						blah = find_between(str(first_response2), str("<title>"), str("</title>"))
+						gay = find_between(str(first_response2), str("\"alternateName\":\""), str("\""))
+
+						if gay == "@" + username:
+							print(YELLOW+"[>] " + username + " is not available. #1")
 							snipeready = False
 						else:
-							if "See Instagram photos and videos from " in str(first_response2):
-								print(YELLOW+"[>] " + username + " is not available. #3")
+							if "Posts - See Instagram photos and videos from" in str(first_response2):
+								print(YELLOW+"[>] " + username + " is not available. #2")
 								snipeready = False
 							else:
-								if "Create an account or log in to Instagram " in str(first_response2):
-									print(CRED + "[>] Login is bad, get a new one. Most likely locked. #2")
+								if "See Instagram photos and videos from " in str(first_response2):
+									print(YELLOW+"[>] " + username + " is not available. #3")
 									snipeready = False
 								else:
-									if blah == '\\nInstagram\\n':
-										print(GREEN+"[>] " + username + " is available, claiming.")
-										snipeready = True
+									if "Create an account or log in to Instagram " in str(first_response2):
+										print(CRED + "[>] Login is bad, get a new one. Most likely locked. #2")
+										break
+										snipeready = False
 									else:
-										if blah == '\\nLogin \\xe2\\x80\\xa2 Instagram\\n':
-											print(CRED+"[>] Login is bad, get a new one. Most likely locked. #3")
-											snipeready = False
-				except requests.exceptions.Timeout:
-					print(CRED + "[>] Request timed out.")
+										if blah == '\\nInstagram\\n':
+											print(GREEN+"[>] " + username + " is available, claiming.")
+											snipeready = True
+										else:
+											if blah == '\\nLogin \\xe2\\x80\\xa2 Instagram\\n':
+												print(CRED+"[>] Login is bad, get a new one. Most likely locked. #3")
+												break
+												snipeready = False
+					except requests.exceptions.Timeout:
+						print(CRED + "[>] Request timed out.")
 
-				time.sleep(5)
-				try:
-					if snipeready == True:
-						data1 = 'first_name=' + firstname + '&email=' + urllib.parse.quote(email) + '&username=' + username + '&phone_number=' + urllib.parse.quote(phone) + '&biography=' + urllib.parse.quote(biography) + '&external_url=&chaining_enabled=on'
-						send = requests.post("https://www.instagram.com/accounts/edit/", data = data1, headers=postheaders, proxies=proxies)
-						second_response = str(send.content)
-						second_response = second_response.replace("b'", "");
-						second_response = second_response.replace('\\', "");
-						second_response = second_response[:-1]
-						try:
-							if "Something is wrong." in second_response:
-								logtofile("instagram_error_3.txt", second_response)
-								print(CRED + "[>] Instagram said something was wrong and to try again.")
-								time.sleep(60)
-								break;
-						except:
-							pass
-						try:
-							data = json.loads(str(second_response))
-							if data['status'] == "ok":
-								print(CGREEN + "[>] Successfully claimed username.")
-								sniped.append("1")
-								logtofile("success_" + username + ".txt", fileName + " > " + username)
-								return;
-								exit()
-								break;
-							else:
-								if data['message']['errors'][0] == "This username isn't available. Please try another.":
-									print(CRED + "[>] This username is not available.")
+					time.sleep(5)
+					try:
+						if snipeready == True:
+							data1 = 'first_name=' + firstname + '&email=' + urllib.parse.quote(email) + '&username=' + username + '&phone_number=' + urllib.parse.quote(phone) + '&biography=' + urllib.parse.quote(biography) + '&external_url=&chaining_enabled=on'
+							send = requests.post("https://www.instagram.com/accounts/edit/", data = data1, headers=postheaders, proxies=proxies)
+							second_response = str(send.content)
+							second_response = second_response.replace("b'", "");
+							second_response = second_response.replace('\\', "");
+							second_response = second_response[:-1]
+							try:
+								if "Something is wrong." in second_response:
+									logtofile("instagram_error_3.txt", second_response)
+									print(CRED + "[>] Instagram said something was wrong and to try again.")
+									time.sleep(60)
+									break;
+							except:
+								pass
+							try:
+								data = json.loads(str(second_response))
+								if data['status'] == "ok":
+									print(CGREEN + "[>] Successfully claimed username.")
+									sniped.append("1")
+									sniped_username.append(username)
+									logtofile("success_" + username + ".txt", mycookie + " > " + username)
+									return;
+									exit()
 									break;
 								else:
-									if data['status'] == "fail":
-										print(CRED + "[>] Instagram returned fail.")
-										time.sleep(5)
+									if data['message']['errors'][0] == "This username isn't available. Please try another.":
+										print(CRED + "[>] This username is not available.")
 										break;
 									else:
-										if data['message'] == "Please wait a few minutes before you try again.":
-											print(CRED + "[>] Rate limited.")
-											time.sleep(30)
+										if data['status'] == "fail":
+											print(CRED + "[>] Instagram returned fail.")
+											time.sleep(5)
+											break;
 										else:
-											if data['message'] == "feedback_required" or data['feedback_title'] == "Try Again Later":
-												print(CRED + "[>] Rate limited #2.")
+											if data['message'] == "Please wait a few minutes before you try again.":
+												print(CRED + "[>] Rate limited.")
 												time.sleep(30)
 											else:
-												if data['message'] == "checkpoint_required":
-													print(CRED+ "[>] Rate limited #3. (Account might be locked)")
+												if data['message'] == "feedback_required" or data['feedback_title'] == "Try Again Later":
+													print(CRED + "[>] Rate limited #2.")
 													time.sleep(30)
-						except:
-							print(CRED + "[>] Unknown response from Instagram.")
-					else:
-						pass
-				except:
-					print(CRED + "[>] Something went wrong while claiming username.")
+												else:
+													if data['message'] == "checkpoint_required":
+														print(CRED+ "[>] Rate limited #3. (Account might be locked)")
+														time.sleep(30)
+							except:
+								print(CRED + "[>] Unknown response from Instagram.")
+						else:
+							pass
+					except:
+						print(CRED + "[>] Something went wrong while claiming username.")
 
 
 # Multi-thread depending on how many accounts we have (Turbo Option)
@@ -569,6 +591,8 @@ def swapper():
 			th = threading.Thread(target=changeusername1, args=(secondaccountusername, firstaccountusername, "2"))
 			th.start()
 		th.join()
+
+		#print(CGREEN + "")
 
 		#changeusername1(secondaccountusername, firstaccountusername, "2")
 
