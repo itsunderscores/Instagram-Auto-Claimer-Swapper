@@ -1,8 +1,16 @@
+#from selenium import webdriver
+#from selenium.webdriver.firefox.options import Options
+#from selenium.webdriver.common.proxy import Proxy
+#from selenium.webdriver.common.by import By
+#from selenium.webdriver.support import expected_conditions as EC
+#from selenium.webdriver.support.ui import WebDriverWait
+#from seleniumwire import webdriver
 import requests
 import os, sys, time
 import os.path
 import time as t
 import threading
+#import getpass
 import urllib.request
 import urllib.parse
 import pickle
@@ -39,9 +47,11 @@ def header():
 	print(CRED+"[-] Developed by underscores#0001")
 	print(WHITE+"-------------------------------------------------------"+YELLOW)
 
-proxies = {
-    "http": "YOUR PROXY WILL GO HERE!"
-}
+def getproxy(file):
+	proxy = random.choice(list(open(file)))
+	proxy = proxy.strip()
+	proxy = proxy.replace("\n", "")
+	return proxy
 
 def unescape(in_str):
     """Unicode-unescape string with only some characters escaped."""
@@ -108,6 +118,10 @@ def login(username, password):
 	    'from_reg': 'false',
 	    '_csrftoken': 'YcJzPesTYxMTfmpSOiVn3pfRAJdrETFD',
 	    'login_attempt_countn': '0'
+	}
+
+	proxies = {
+	    "http": getproxy('proxies.txt')
 	}
 
 	response = requests.post(url=url, headers=headers, data=data, proxies=proxies)
@@ -199,6 +213,10 @@ def loadContents(fileName, delay, timeout):
 			"TE": "trailers",
 		}
 
+		proxies = {
+		    "http": getproxy('proxies.txt')
+		}
+
 		# Grabs current account information
 		url = "https://www.instagram.com/accounts/edit/"
 		grab = requests.get(url, headers=getheaders, proxies=proxies)
@@ -234,6 +252,11 @@ def loadContents(fileName, delay, timeout):
 						pass
 
 					try:
+
+						proxies = {
+						    "http": getproxy('proxies.txt')
+						}
+						# FIX THIS , FINE A BETTER WAY TO SEE IF AN ACCOUNT IS UNAVAILABLE!!!!!
 						url2 = "https://www.instagram.com/" + username + "/"
 						grab2 = requests.get(url2, headers=getheaders, timeout=timeout, proxies=proxies)
 						first_response2 = grab2.content
@@ -272,6 +295,9 @@ def loadContents(fileName, delay, timeout):
 					time.sleep(5)
 					try:
 						if snipeready == True:
+							proxies = {
+							    "http": getproxy('proxies.txt')
+							}
 							data1 = 'first_name=' + firstname + '&email=' + urllib.parse.quote(email) + '&username=' + username + '&phone_number=' + urllib.parse.quote(phone) + '&biography=' + urllib.parse.quote(biography) + '&external_url=&chaining_enabled=on'
 							send = requests.post("https://www.instagram.com/accounts/edit/", data = data1, headers=postheaders, proxies=proxies)
 							second_response = str(send.content)
@@ -386,6 +412,11 @@ def verifyaccount(username, type):
 	}
 
 	try:
+
+		proxies = {
+		    "http": getproxy('proxies.txt')
+		}
+
 		url = "https://www.instagram.com/accounts/edit/"
 		grab = requests.get(url, headers=getheaders, proxies=proxies)
 		first_response = grab.content
@@ -476,6 +507,10 @@ def changeusername1(username, newusername, type):
 				return;
 		except:
 			pass
+
+		proxies = {
+		    "http": getproxy('proxies.txt')
+		}
 
 		url = "https://www.instagram.com/accounts/edit/"
 		send = requests.post(url, data = fixstring, headers=postheaders, proxies=proxies)
