@@ -7,7 +7,9 @@ Proxies are required for this to work properly. **Rotating and Residential are r
 
 The program has three different settings. All which are currently functioning as of 12/11/2021. Before swapping a high-end account, ensure it is working with throwaway accounts first.
 
-If you need helping swapping or cannot get this **simple** program working. Feel free to contact me. underscores#0001
+If you need helping swapping or cannot get this **simple** program working. Feel free to contact me.
+
+https://discord.gg/vG5Rz9dASx
 
 ## 12/13/21 Update
 
