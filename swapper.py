@@ -228,7 +228,7 @@ def loadContents(fileName, delay, timeout):
 
 					try:
 						if sniped[0] == "1":
-							print(CGREEN + "[>] Closed because we claimed " + sniped_username + " successfully.")
+							print(CGREEN + "[>] Closed because we claimed " + sniped_username[0] + " successfully.")
 							return;
 					except:
 						pass
