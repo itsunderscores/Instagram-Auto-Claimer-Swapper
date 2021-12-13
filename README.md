@@ -39,8 +39,6 @@ Turbo/Auto-claim list of username(s).
 
 2) It will go through the list of usernames in file **usernames.txt** and will see if the name is available.
 
-<img src="https://i.imgur.com/gnADczc.png" width="30%" />
-
 ## Second Mode (Swapper):
 Mainly used to swap a username over to another account. **Updated to claim faster**
 
@@ -48,5 +46,3 @@ It will ask for the login of the first account that will be releasing the userna
 
 ## Third Mode (Login to accounts):
 Grab required cookies from accounts in **accounts.txt** (This is required for the first mode.)
-
-<img src="https://i.imgur.com/Du9AwCD.png" width="30%" />
