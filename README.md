@@ -11,9 +11,9 @@ Are you brain dead and need help? underscores#0001
 
 If you need helping swapping or cannot get this **simple** program working. Feel free to contact me.
 
-**12/13/21 Update**
+## **12/13/21 Update**
 
-Multiple proxies are not supported. Place proxies in **proxies.txt*
+Multiple proxies are now supported. Place proxies in **proxies.txt*
 
 # Videos
 Auto Claimer/Turbo Example: https://www.youtube.com/watch?v=Kig-mcNS_Z0
