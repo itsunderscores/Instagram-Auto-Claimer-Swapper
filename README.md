@@ -7,7 +7,7 @@ Proxies are required for this to work properly. **Rotating and Residential are r
 
 The program has three different settings. All which are currently functioning as of 12/11/2021. Before swapping a high-end account, ensure it is working with throwaway accounts first.
 
-* **Replace proxy on line 51 with your own**
+* **Replace proxy on line 43 with your own**
 
 Are you brain dead and need help? underscores#0001
 
