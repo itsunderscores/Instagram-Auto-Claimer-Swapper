@@ -126,7 +126,6 @@ def login(username, password):
 	}
 
 	if useproxy[0] == "1":
-		print("Using proxy!")
 		proxy = { "http" : "http://" + getproxy('proxies.txt') }
 	else:
 		proxy = { "http" : getproxy('proxies.txt')  }
