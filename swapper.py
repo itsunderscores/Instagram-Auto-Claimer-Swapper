@@ -35,7 +35,7 @@ def header():
 | |_| |_| | |  | |_) | (_) |
  \__|\__,_|_|  |_.__/ \___/ 
 	''')
-	print(CRED+"[+] Instagram Turbo v2")
+	print(CRED+"[+] Instagram Turbo v2.1")
 	print(CRED+"[-] Developed by underscores#0001")
 	print(WHITE+"-------------------------------------------------------"+YELLOW)
 
