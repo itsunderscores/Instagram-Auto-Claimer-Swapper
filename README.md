@@ -20,7 +20,7 @@ https://discord.gg/vG5Rz9dASx
 
 **Change Log**: 12/13/21 v2.3
 - Swapper has been updated in various ways.
-- If the swap is unsuccessful due to 14 day, or other Instagram blocks, the original username will be reverted back to it's original.
+- If the swap is unsuccessful due to 14 day, or other Instagram blocks, the original username will be reverted back.
 - Faster swaps and increased realiblity
 - Multiple proxies are now supported. Place proxies in **proxies.txt**
 - Swapper is now multi-threaded and claims faster
