@@ -3,13 +3,15 @@ For fuck sakes, please don't sell this. IT'S FREE so keep it that way. If you ge
 
 Use this at your own descretion. I've only used this on test accounts and nothing high-end. Although, it should get the job done.
 
-Proxies are required for this to work properly. **Rotating and Residential are recommended.** I will keep the proxies file updated with fresh proxies for those who don't have access HQ proxies.
+Proxies are required for this to work properly. **Rotating and Residential are recommended.** 
+
+- I will keep the proxies file updated with fresh proxies for those who don't have access HQ proxies.
 
 The program has three different settings. All which are currently functioning as of 12/11/2021. Before swapping a high-end account, ensure it is working with throwaway accounts first.
 
 If you need helping swapping or cannot get this **simple** program working. Feel free to contact me.
 
-https://discord.gg/vG5Rz9dASx
+- https://discord.gg/vG5Rz9dASx
 
 ## 12/13/21 Update v2.1
 
