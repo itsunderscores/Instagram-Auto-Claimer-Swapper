@@ -290,7 +290,7 @@ def loadContents(fileName, delay, timeout):
 		biography = ""
 
 		while True:
-			
+
 			try: # Claimed (Old)
 				#if sniped[0] == "1":
 				if sniped[0] == "5":
@@ -299,7 +299,7 @@ def loadContents(fileName, delay, timeout):
 			except:
 				pass
 
-			# Stop trying on account if 20+ failed attempts.
+			# Stop trying on account if 50+ failed attempts. We can also try to get a new cookie instead?
 			try:
 				if failed > 50:
 					print("[>] Closed a thread because we had 50+ failed attempts.")
@@ -337,7 +337,6 @@ def loadContents(fileName, delay, timeout):
 
 
 					try:
-
 						proxies = {
 						    "http": getproxy('proxies.txt')
 						}
