@@ -37,6 +37,8 @@ else:
 	print("https://github.com/itsunderscores/Instagram-Auto-Claimer-Swapper")
 	exit()
 
+
+
 global syn
 def header():
 	print(CRED+''' _              _           
@@ -54,6 +56,8 @@ def getproxy(file):
 	proxy = proxy.strip()
 	proxy = proxy.replace("\n", "")
 	return proxy
+
+useproxy = []
 
 def unescape(in_str):
     in_str = in_str.encode('unicode-escape')   # bytes with all chars escaped (the original escapes have the backslash escaped)
@@ -120,11 +124,22 @@ def login(username, password):
 	    'login_attempt_countn': '0'
 	}
 
-	proxies = {
-	    "http": getproxy('proxies.txt')
-	}
+	if useproxy[0] == "1":
+		print("Using proxy!")
+		proxy = { "http" : "http://" + getproxy('proxies.txt') }
+	else:
+		proxy = { "http" : getproxy('proxies.txt')  }
 
-	response = requests.post(url=url, headers=headers, data=data, proxies=proxies)
+	while True:
+		try:
+			response = requests.post(url=url, headers=headers, data=data, timeout=5, proxies=proxy)
+			if not response.text:
+				pass
+			else:
+				break
+		except requests.ConnectionError:
+			print("[>] Connection timed out. Proxy is probably bad.")
+			return
 
 	cookies = response.cookies
 
@@ -136,6 +151,23 @@ def login(username, password):
 			print(CGREEN+"[>] Successfully logged in: " + username)
 			logtofile("cookies/" + username + ".txt", cookies)
 			return "1"
+	except:
+		pass
+
+	try:
+		if "Please wait a few minutes before you try again." in response.text:
+			print(CRED+ "[!] Rate Limited. Please wait a few minutes. " + username)
+			time.sleep(120)
+			bad = True
+			return "0"
+	except:
+		pass
+
+	try:
+		if "The password you entered is incorrect." in response.text:
+			print(CRED+ "[!] Password is incorrect " + username)
+			bad = True
+			return "0"
 	except:
 		pass
 
@@ -157,7 +189,8 @@ def login(username, password):
 
 	try:
 		if loadjson["error_type"] == "ip_block":
-			print(CRED+ "[!] This IP has been blocked.")
+			print(CRED+ "[!] This IP has been blocked. Waiting a few minutes before trying again.")
+			time.sleep(120)
 			bad = True
 			return "0"
 	except:
@@ -189,12 +222,9 @@ def login(username, password):
 def logintotheaccounts():
 	with open('accounts.txt', 'r') as f:
 		for line in f:
-			try:
-				username = line.split(':')[0]
-				password = line.split(':')[1]
-				login(username, password)
-			except:
-				print(CRED+"[!] Something went wrong while logging you in.")
+			username = line.split(':')[0]
+			password = line.split(':')[1]
+			login(username, password)
 	print(CGREEN + "[>] Finished logging in.")
 
 #######################################################################
@@ -224,14 +254,6 @@ def loadContents(fileName, delay, timeout):
 	while True:
 		mycookie = getrandomcookie()
 		with open("cookies/" + mycookie, 'r') as f:
-
-			try:
-				#if sniped[0] == "1":
-				if sniped[0] == "5":
-					print(CGREEN + "[>] Closed because we claimed " + sniped_username[0] + " successfully.")
-					return;
-			except:
-				pass
 
 			for line in f:
 				csrf = find_between(line, "csrftoken=", " for")
@@ -271,13 +293,25 @@ def loadContents(fileName, delay, timeout):
 			"TE": "trailers",
 		}
 
-		proxies = {
-		    "http": getproxy('proxies.txt')
-		}
+		if useproxy[0] == "1":
+			proxy = { "http" : "http://" + getproxy('proxies.txt') }
+		else:
+			proxy = { "http" : getproxy('proxies.txt')  }
 
 		# Grabs current account information
 		url = "https://www.instagram.com/accounts/edit/"
-		grab = requests.get(url, headers=getheaders, proxies=proxies)
+
+		while True:
+			try:
+				grab = requests.get(url, headers=getheaders, timeout=10, proxies=proxy)
+				if not grab.text:
+					pass
+				else:
+					break
+			except requests.ConnectionError:
+				print("[>] Connection timed out. Proxy is probably bad.")
+				return
+
 		first_response = grab.content
 		biography = find_between(str(first_response), '{"biography":"', '",')
 		firstname = find_between(str(first_response), '"first_name":"', '",')
@@ -337,11 +371,24 @@ def loadContents(fileName, delay, timeout):
 
 
 					try:
-						proxies = {
-						    "http": getproxy('proxies.txt')
-						}
+						if useproxy[0] == "1":
+							proxy = { "http" : "http://" + getproxy('proxies.txt') }
+						else:
+							proxy = { "http" : getproxy('proxies.txt')  }
+
 						url2 = "https://www.instagram.com/" + username + "/"
-						grab2 = requests.get(url2, headers=getheaders, timeout=timeout, proxies=proxies)
+
+						while True:
+							try:
+								grab2 = requests.get(url2, headers=getheaders, timeout=timeout, proxies=proxy)
+								if not grab2.text:
+									pass
+								else:
+									break
+							except requests.ConnectionError:
+								print("[>] Connection timed out. Proxy is probably bad.")
+								return
+
 						first_response2 = grab2.content
 
 						blah = find_between(str(first_response2), str("<title>"), str("</title>"))
@@ -382,11 +429,25 @@ def loadContents(fileName, delay, timeout):
 
 					try:
 						if snipeready == True:
-							proxies = {
-							    "http": getproxy('proxies.txt')
-							}
+							
+							if useproxy[0] == "1":
+								proxy = { "http" : "http://" + getproxy('proxies.txt') }
+							else:
+								proxy = { "http" : getproxy('proxies.txt')  }
+
 							data1 = 'first_name=' + firstname + '&email=' + urllib.parse.quote(email) + '&username=' + username + '&phone_number=' + urllib.parse.quote(phone) + '&biography=' + urllib.parse.quote(biography) + '&external_url=&chaining_enabled=on'
-							send = requests.post("https://www.instagram.com/accounts/edit/", data = data1, headers=postheaders, proxies=proxies)
+							
+							while True:
+								try:
+									send = requests.post("https://www.instagram.com/accounts/edit/", data = data1, timeout=10, headers=postheaders, proxies=proxy)
+									if not send.text:
+										pass
+									else:
+										break
+								except requests.ConnectionError:
+									print("[>] Connection timed out. Proxy is probably bad.")
+									return
+
 							second_response = str(send.content)
 							second_response = second_response.replace("b'", "");
 							second_response = second_response.replace('\\', "");
@@ -447,17 +508,28 @@ def loadContents(fileName, delay, timeout):
 					time.sleep(delay)
 
 
+def get_files():
+    files = []
+    for i in os.listdir('cookies'):
+        files.append(os.path.join(os.getcwd(), 'cookies', i))
+    return files
+
 # Multi-thread depending on how many accounts we have (Turbo Option)
 def multithread():
 	print("")
-	delay = input("[>] Delay per request in seconds: ")
-	timeout = input("[>] Request timeout in seconds: ")
-	threads = input("[>] Threads to open: ")
-	#files = os.listdir('cookies/')
-	for x in range(int(threads)):
-		th = threading.Thread(target=loadContents, args=("1", int(delay), int(timeout)))
-		th.start()
-	th.join()
+
+	files = get_files()
+	if len(files) <= 0:
+		print("Could not locate any accounts/cookies. Please sign into them first!")
+	else:
+		delay = input("[>] Delay per request in seconds: ")
+		timeout = input("[>] Request timeout in seconds: ")
+		threads = input("[>] Threads to open: ")
+		#files = os.listdir('cookies/')
+		for x in range(int(threads)):
+			th = threading.Thread(target=loadContents, args=("1", int(delay), int(timeout)))
+			th.start()
+		th.join()
 
 #######################################################################
 
@@ -510,12 +582,25 @@ def verifyaccount(username, type):
 
 	try:
 
-		proxies = {
-		    "http": getproxy('proxies.txt')
-		}
+		if useproxy[0] == "1":
+			proxy = { "http" : "http://" + getproxy('proxies.txt') }
+		else:
+			proxy = { "http" : getproxy('proxies.txt')  }
 
 		url = "https://www.instagram.com/accounts/edit/"
-		grab = requests.get(url, headers=getheaders, proxies=proxies)
+
+		while True:
+			try:
+				grab = requests.get(url, headers=getheaders, timeout=10, proxies=proxy)
+				if not grab.text:
+					pass
+				else:
+					break
+			except requests.ConnectionError:
+				print("[>] Connection timed out. Proxy is probably bad.")
+				return
+
+
 		first_response = grab.content
 		biography = find_between(str(first_response), '{"biography":"', '",')
 		firstname = find_between(str(first_response), '"first_name":"', '",')
@@ -608,12 +693,24 @@ def changeusername1(username, newusername, type):
 		except:
 			pass
 
-		proxies = {
-		    "http": getproxy('proxies.txt')
-		}
+		if useproxy[0] == "1":
+			proxy = { "http" : "http://" + getproxy('proxies.txt') }
+		else:
+			proxy = { "http" : getproxy('proxies.txt')  }
 
 		url = "https://www.instagram.com/accounts/edit/"
-		send = requests.post(url, data = fixstring, headers=postheaders, proxies=proxies)
+
+		while True:
+			try:
+				send = requests.post(url, data = fixstring, headers=postheaders, timeout=10, proxies=proxy)
+				if not send.text:
+					pass
+				else:
+					break
+			except requests.ConnectionError:
+				print("[>] Connection timed out. Proxy is probably bad.")
+				return
+
 		second_response = str(send.content)
 		second_response = second_response.replace("b'", "");
 		second_response = second_response.replace('\\', "");
@@ -794,6 +891,15 @@ def swapper():
 
 # __MAIN__
 header()
+
+question = input(YELLOW + "[>] Would you like to use proxies from proxies.txt? (Y/N): ")
+if question == "y" or question == "Y":
+	useproxy.append("1")
+	print("[>] Proxies being used.\n")
+else:
+	useproxy.append("0")
+	print("[>] Proxies not being used.\n")
+
 mode = input(YELLOW + "[>] Please choose one of the following\n[>] 1 = Turbo\n[>] 2 = Swapper\n[>] 3 = Login to Accounts (If you haven't done this before or it's been a while)\n[>] Selection: ")
 if mode == "1":
 	multithread()
