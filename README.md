@@ -14,7 +14,7 @@ https://discord.gg/vG5Rz9dASx
 ## 12/13/21 Update v2.1
 
 - Multiple proxies are now supported. Place proxies in **proxies.txt**
-- Swapper is not multi-threaded and claims faster
+- Swapper is now multi-threaded and claims faster
 - Autoclaimer/Turbo has been fixed, had a bug
 - Detects certain error messages while logging in
 
