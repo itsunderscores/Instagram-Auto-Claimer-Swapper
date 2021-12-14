@@ -35,7 +35,7 @@ def header():
 | |_| |_| | |  | |_) | (_) |
  \__|\__,_|_|  |_.__/ \___/ 
 	''')
-	print(CRED+"[+] Instagram Turbo v2.1")
+	print(CRED+"[+] Instagram Turbo v2")
 	print(CRED+"[-] Developed by underscores#0001")
 	print(WHITE+"-------------------------------------------------------"+YELLOW)
 
@@ -164,7 +164,7 @@ def login(username, password):
 	
 	try:
 		if loadjson["message"] == "The username you entered doesn't appear to belong to an account. Please check your username and try again.":
-			print(CRED+ "[!] Username does not belong to an account.")
+			print(CRED+ "[!] Username " + username +" does not belong to an account.")
 			bad = True
 			return "0"
 	except:
@@ -202,6 +202,7 @@ def getrandomcookie():
 # Multi-threaded Turbo
 sniped = []
 sniped_username = []
+claiming = []
 def loadContents(fileName, delay, timeout):
 
 	while True:
@@ -322,6 +323,7 @@ def loadContents(fileName, delay, timeout):
 										if blah == '\\nInstagram\\n':
 											print(GREEN+"[>] " + username + " is available, claiming.")
 											snipeready = True
+											claiming.append(time.time())
 										else:
 											if blah == '\\nLogin \\xe2\\x80\\xa2 Instagram\\n':
 												print(CRED+"[>] Login is bad, get a new one. Most likely locked. #3")
@@ -356,6 +358,7 @@ def loadContents(fileName, delay, timeout):
 									sniped.append("1")
 									sniped_username.append(username)
 									logtofile("success_" + username + ".txt", mycookie + " > " + username)
+									print("[>] It took %s seconds to claim!" % (time.time() - claiming[0]))
 									return;
 									exit()
 									break;
