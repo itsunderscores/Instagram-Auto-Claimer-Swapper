@@ -3,11 +3,10 @@ Version: **2.3**<br>
 Last Update: **12/13/2021**<br>
 <hr>
 
-Auto Claimer/Turbo Example: https://youtu.be/fjr4wn9BY7k
-
-Swapper Example: https://www.youtube.com/watch?v=OhSDkKA_HAw
-
 Use this at your own descretion. I've only used this on test accounts and nothing high-end. Although, it should get the job done.<br>
+
+Auto Claimer/Turbo Example: https://youtu.be/fjr4wn9BY7k<br>
+Swapper Example: https://www.youtube.com/watch?v=OhSDkKA_HAw
 
 Proxies are required for this to work properly. **Rotating and Residential are recommended.** <br>
 I will keep the <a target="_blank" href="https://raw.githubusercontent.com/itsunderscores/Instagram-Auto-Claimer-Swapper/main/proxies.txt">proxies</a> file updated with fresh proxies for those who don't have access HQ proxies.<br>
@@ -15,6 +14,15 @@ Before swapping a high-end account, ensure it is working with throwaway accounts
 
 If you need helping swapping or cannot get this **simple** program working. Feel free to contact me.<br>
 https://discord.gg/vG5Rz9dASx
+
+<hr>
+
+**Features**
+- Multi-threading<br>
+- Proxy Supported
+- Autoclaimer/Turbo
+- Account Swapper
+- FREE!
 
 <hr>
 
