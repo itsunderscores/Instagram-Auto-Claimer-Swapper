@@ -27,6 +27,7 @@ https://discord.gg/vG5Rz9dASx
 <hr>
 
 **Change Log**: 12/13/21 v2.3
+- Turbo/Autoclaimer will continue claiming (if enough accounts are loaded) after it has claimed a username already.
 - Swapper has been updated in various ways.
 - If the swap is unsuccessful due to 14 day, or other Instagram blocks, the original username will be reverted back.
 - Faster swaps and increased realiblity
