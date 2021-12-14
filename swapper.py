@@ -1,8 +1,16 @@
+#from selenium import webdriver
+#from selenium.webdriver.firefox.options import Options
+#from selenium.webdriver.common.proxy import Proxy
+#from selenium.webdriver.common.by import By
+#from selenium.webdriver.support import expected_conditions as EC
+#from selenium.webdriver.support.ui import WebDriverWait
+#from seleniumwire import webdriver
 import requests
 import os, sys, time
 import os.path
 import time as t
 import threading
+#import getpass
 import urllib.request
 import urllib.parse
 import pickle
@@ -139,7 +147,7 @@ def login(username, password):
 		pass
 
 	try:
-		if "ip_block" == loadjson["error_type"]:
+		if loadjson["error_type"] == "ip_block":
 			print(CRED+ "[!] This IP has been blocked.")
 			bad = True
 			return "0"
@@ -172,9 +180,12 @@ def login(username, password):
 def logintotheaccounts():
 	with open('accounts.txt', 'r') as f:
 		for line in f:
-			username = line.split(':')[0]
-			password = line.split(':')[1]
-			login(username, password)
+			try:
+				username = line.split(':')[0]
+				password = line.split(':')[1]
+				login(username, password)
+			except:
+				print(CRED+"[!] Something went wrong while logging you in.")
 
 #######################################################################
 
