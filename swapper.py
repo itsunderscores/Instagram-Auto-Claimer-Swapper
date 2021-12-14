@@ -585,8 +585,8 @@ def changeusername1(username, newusername, type):
 					print(CRED + "[>] This username is not available.")
 				else:
 					if data['status'] == "fail":
-						print(send.text)
-						print(CRED + "[>] Instagram returned fail.")
+						#print(send.text)
+						print(CRED + "[>] Instagram returned fail. Username isn't available.")
 					else:
 						if data['message'] == "Please wait a few minutes before you try again.":
 							print(CRED + "[>] Rate limited.")
@@ -677,7 +677,7 @@ def swapper():
 
 		# Change username of first account to second account username?
 		#for x in range(int(1)):
-		#	th = threading.Thread(target=changeusername1, args=(firstaccountusername, firstaccountusername, "1"))
+		#	th = threading.Thread(target=changeusername1, args=(firstaccountusername, secondaccountusername, "1"))
 		#	th.start()
 		#th.join()
 
