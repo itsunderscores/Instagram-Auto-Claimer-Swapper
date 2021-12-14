@@ -667,14 +667,7 @@ def swapper():
 			th.start()
 		th.join()
 
-		time.sleep(3)
-
-		for x in range(int(1)):
-			th = threading.Thread(target=changeusername1, args=(firstaccountusername, randomusername + "a", "1"))
-			th.start()
-		th.join()
-
-		time.sleep(5)
+		#time.sleep(5)
 
 		# Multi thread 
 		for x in range(int(3)):
