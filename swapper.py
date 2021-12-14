@@ -27,6 +27,15 @@ CYAN    = '\033[36m'
 WHITE   = '\033[37m'
 RESET   = '\033[39m'
 
+# Checking if program is up-to-date
+version = "2.3"
+check = requests.get(url = "https://raw.githubusercontent.com/itsunderscores/Instagram-Auto-Claimer-Swapper/main/version.txt")
+if(version in check.text):
+	pass
+else:
+	print("This version is currently out of date and is recommended you download the updated one.")
+	exit()
+
 global syn
 def header():
 	print(CRED+''' _              _           
@@ -35,7 +44,7 @@ def header():
 | |_| |_| | |  | |_) | (_) |
  \__|\__,_|_|  |_.__/ \___/ 
 	''')
-	print(CRED+"[+] Instagram Turbo v2.2")
+	print(CRED+"[+] Instagram Turbo v" + version)
 	print(CRED+"[-] Developed by underscores#0001")
 	print(WHITE+"-------------------------------------------------------"+YELLOW)
 
@@ -46,7 +55,6 @@ def getproxy(file):
 	return proxy
 
 def unescape(in_str):
-    """Unicode-unescape string with only some characters escaped."""
     in_str = in_str.encode('unicode-escape')   # bytes with all chars escaped (the original escapes have the backslash escaped)
     in_str = in_str.replace(b'\\\\u', b'\\u')  # unescape the \
     in_str = in_str.decode('unicode-escape')   # unescape unicode
