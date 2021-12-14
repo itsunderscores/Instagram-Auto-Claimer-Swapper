@@ -203,6 +203,11 @@ def logintotheaccounts():
 # NEW TURBO / AUTO CLAIMER #
 ############################
 
+# remove username from list if claimed
+# keep going if username list has more than 1
+# skip and remove username if 10+ attempts and it has failed
+
+
 # Random Account from folder /cookies
 def getrandomcookie():
 	file = random.choice(os.listdir("cookies/")) #change dir name to whatever
@@ -214,11 +219,15 @@ sniped_username = []
 claiming = []
 def loadContents(fileName, delay, timeout):
 
+	failed = 0
+
 	while True:
 		mycookie = getrandomcookie()
 		with open("cookies/" + mycookie, 'r') as f:
+
 			try:
-				if sniped[0] == "1":
+				#if sniped[0] == "1":
+				if sniped[0] == "5":
 					print(CGREEN + "[>] Closed because we claimed " + sniped_username[0] + " successfully.")
 					return;
 			except:
@@ -281,24 +290,51 @@ def loadContents(fileName, delay, timeout):
 		biography = ""
 
 		while True:
-			try:
-				if sniped[0] == "1":
+			
+			try: # Claimed (Old)
+				#if sniped[0] == "1":
+				if sniped[0] == "5":
 					print(CGREEN + "[>] Closed because we claimed " + sniped_username[0] + " successfully.")
 					return;
 			except:
 				pass
 
+			# Stop trying on account if 20+ failed attempts.
+			try:
+				if failed > 50:
+					print("[>] Closed a thread because we had 50+ failed attempts.")
+					return;
+			except:
+				pass
+
+			# Going through each username in file to claim
 			with open('usernames.txt', 'r') as accountfile:
 				for username in accountfile:
 					username = username.strip()
 					username = username.replace("\n", "")
 
-					try:
-						if sniped[0] == "1":
+					try: # Claimed (Old)
+						#if sniped[0] == "1":
+						if sniped[0] == "5":
 							print(CGREEN + "[>] Closed because we claimed " + sniped_username[0] + " successfully.")
 							return;
 					except:
 						pass
+
+					try: #We already claimed this username
+						if username in sniped_username:
+							print("We have already claimed this username!")
+							with open("usernames.txt", "r") as f:
+							    lines = f.readlines()
+							with open("usernames.txt", "w") as f:
+							    for line in lines:
+							        if line.strip("\n") != username:
+							            f.write(line)
+						else:
+							pass
+					except:
+						pass
+
 
 					try:
 
@@ -314,20 +350,24 @@ def loadContents(fileName, delay, timeout):
 
 						if gay == "@" + username:
 							print(YELLOW+"[>] " + username + " is not available. #1")
+							failed += 1
 							snipeready = False
 						else:
 							if "Posts - See Instagram photos and videos from" in str(first_response2):
 								print(YELLOW+"[>] " + username + " is not available. #2")
+								failed += 1
 								snipeready = False
 							else:
 								if "See Instagram photos and videos from " in str(first_response2):
 									print(YELLOW+"[>] " + username + " is not available. #3")
+									failed += 1
 									snipeready = False
 								else:
 									if "Create an account or log in to Instagram " in str(first_response2):
 										print(CRED + "[>] Login is bad, get a new one. Most likely locked. #2")
-										break
+										failed += 1
 										snipeready = False
+										break
 									else:
 										if blah == '\\nInstagram\\n':
 											print(GREEN+"[>] " + username + " is available, claiming.")
@@ -357,6 +397,7 @@ def loadContents(fileName, delay, timeout):
 									logtofile("instagram_error_3.txt", second_response)
 									print(CRED + "[>] Instagram said something was wrong and to try again.")
 									time.sleep(60)
+									failed += 1
 									break;
 							except:
 								pass
@@ -368,29 +409,34 @@ def loadContents(fileName, delay, timeout):
 									sniped_username.append(username)
 									logtofile("success_" + username + ".txt", mycookie + " > " + username)
 									print("[>] It took %s seconds to claim!" % (time.time() - claiming[0]))
-									return;
-									exit()
-									break;
+									#return;
+									#exit()
+									#break;
 								else:
 									if data['message']['errors'][0] == "This username isn't available. Please try another.":
 										print(CRED + "[>] This username is not available.")
-										break;
+										failed += 1
+										#break;
 									else:
 										if data['status'] == "fail":
 											print(CRED + "[>] Instagram returned fail.")
+											failed += 1
 											time.sleep(5)
-											break;
+											#break;
 										else:
 											if data['message'] == "Please wait a few minutes before you try again.":
 												print(CRED + "[>] Rate limited.")
+												failed += 1
 												time.sleep(30)
 											else:
 												if data['message'] == "feedback_required" or data['feedback_title'] == "Try Again Later":
 													print(CRED + "[>] Rate limited #2.")
+													failed += 1
 													time.sleep(30)
 												else:
 													if data['message'] == "checkpoint_required":
 														print(CRED+ "[>] Rate limited #3. (Account might be locked)")
+														failed += 1
 														time.sleep(30)
 							except:
 								print(CRED + "[>] Unknown response from Instagram.")
