@@ -1,5 +1,5 @@
 ## Instagram Turbo / Auto Claimer / Swapper
-Version: **V2.3**
+Version: **2.3**
 <hr>
 For fuck sakes, please don't sell this. IT'S FREE so keep it that way. If you genuinely sell this, you're a piece of shit.
 
@@ -21,7 +21,7 @@ If you need helping swapping or cannot get this **simple** program working. Feel
 
 <hr>
 
-**Change Log**: 12/13/21 V2.3
+**Change Log**: 12/13/21 v2.3
 - Swapper has been updated in various ways.
 - If the swap is unsuccessful due to 14 day, or other Instagram blocks, the original username will be reverted back to it's original.
 - Faster swaps and increased realiblity
