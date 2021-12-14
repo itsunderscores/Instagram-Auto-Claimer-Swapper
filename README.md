@@ -19,7 +19,7 @@ https://discord.gg/vG5Rz9dASx
 - Detects certain error messages while logging in
 
 # Videos
-Auto Claimer/Turbo Example: 
+Auto Claimer/Turbo Example: https://youtu.be/fjr4wn9BY7k
 
 Swapper Example: https://www.youtube.com/watch?v=OhSDkKA_HAw
 
