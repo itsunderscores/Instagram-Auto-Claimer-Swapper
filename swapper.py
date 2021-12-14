@@ -35,7 +35,7 @@ def header():
 | |_| |_| | |  | |_) | (_) |
  \__|\__,_|_|  |_.__/ \___/ 
 	''')
-	print(CRED+"[+] Instagram Turbo v2")
+	print(CRED+"[+] Instagram Turbo v2.2")
 	print(CRED+"[-] Developed by underscores#0001")
 	print(WHITE+"-------------------------------------------------------"+YELLOW)
 
@@ -496,7 +496,10 @@ def verifyaccount(username, type):
 
 # Changing the username
 claimed = []
+claimedfail = []
 def changeusername1(username, newusername, type):
+
+	times_attempted = 1
 
 	# Delays one second before changing the @, so the claimer has a headstart!
 	if type == "1":
@@ -572,32 +575,64 @@ def changeusername1(username, newusername, type):
 
 		data = json.loads(str(second_response))
 
+		# Limiting how many times to attempt to claim username
+		try:
+			if type == "2":
+				if times_attempted > 15:
+					print(CRED+ "[!] We attempted over 15 times to swap and couldn't. Account is most likely on a 14 day.")
+					claimedfail.append("1")
+					break;
+		except:
+			pass
+
+		# Success
 		try:
 			if data['status'] == "ok":
 				print(CGREEN + "[>] Successfully changed name to " + newusername)
 				if type == "2":
 					claimed.append("1")
+					claimedfail.append("0")
 				else:
-					print("")
+					pass
 				break;
-			else:
-				if data['message']['errors'][0] == "This username isn't available. Please try another.":
-					print(CRED + "[>] This username is not available.")
-				else:
-					if data['status'] == "fail":
-						#print(send.text)
-						print(CRED + "[>] Instagram returned fail. Username isn't available.")
-					else:
-						if data['message'] == "Please wait a few minutes before you try again.":
-							print(CRED + "[>] Rate limited.")
-						if data['message'] == "feedback_required" or data['feedback_title'] == "Try Again Later":
-							print(CRED + "[>] Rate limited #2.")
-						else:
-							print(send.text)
 		except:
-			print(CRED + "[>] Unknown response from Instagram.")
-			logtofile("instagram_error_5.txt", second_response)
-			break;
+			pass
+
+		try:
+			if "We're unable to save your changes due to an automated spam block." in send.text:
+				print("[>] Instagram has marked " + username + " as spam, please wait before swapping again!")
+				times_attempted += 15
+		except:
+			pass
+
+		try:
+			if data['message']['errors'][0] == "This username isn't available. Please try another.":
+				print(CRED + "[>] This username is not available.")
+				times_attempted += 1
+		except:
+			pass
+
+		try:	
+			if data['status'] == "fail":
+				print(CRED + "[>] Instagram returned fail. Username isn't available.")
+				times_attempted += 1
+		except:
+			pass
+
+		try:
+			if data['message'] == "Please wait a few minutes before you try again.":
+				print(CRED + "[>] Rate limited.")
+				times_attempted += 1
+		except:
+			pass
+
+		try:
+			if data['message'] == "feedback_required" or data['feedback_title'] == "Try Again Later":
+				print(CRED + "[>] Rate limited #2.")
+				times_attempted += 1
+		except:
+			pass
+
 
 # Main Swapper
 def swapper():
@@ -667,25 +702,30 @@ def swapper():
 			th.start()
 		th.join()
 
-		#time.sleep(5)
-
 		# Multi thread 
 		for x in range(int(3)):
 			th = threading.Thread(target=changeusername1, args=(secondaccountusername, firstaccountusername, "2"))
 			th.start()
 		th.join()
 
-		#time.sleep(10)
-
-		# Change username of first account to second account username?
-		#for x in range(int(1)):
-		#	th = threading.Thread(target=changeusername1, args=(firstaccountusername, secondaccountusername, "1"))
-		#	th.start()
-		#th.join()
-
-		#print(CGREEN + "")
-
-		#changeusername1(secondaccountusername, firstaccountusername, "2")
+		# Checking if the swap was a success or fail
+		try:
+			while True:
+				if claimedfail[0] == "1":
+					print(CRED + "[!] Claiming original username has failed, reverting back to the original name on first account.")
+					for x in range(int(1)):
+						th = threading.Thread(target=changeusername1, args=(firstaccountusername, firstaccountusername, "1"))
+						th.start()
+					th.join()
+					break;
+				else:
+					if claimedfail[0] == "0":
+						print(CGREEN + "[>] Everything looks good. Closing.")
+						break;
+					else:
+						pass
+		except:
+			pass
 
 	else:
 		print(CRED+"[>] One of the accounts are not good to use.")
