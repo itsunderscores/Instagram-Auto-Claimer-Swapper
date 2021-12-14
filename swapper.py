@@ -354,7 +354,7 @@ def loadContents(fileName, delay, timeout):
 							try:
 								data = json.loads(str(second_response))
 								if data['status'] == "ok":
-									print(CGREEN + "[>] Successfully claimed username.")
+									print(CGREEN + "[>] Successfully claimed username: " + username)
 									sniped.append("1")
 									sniped_username.append(username)
 									logtofile("success_" + username + ".txt", mycookie + " > " + username)
