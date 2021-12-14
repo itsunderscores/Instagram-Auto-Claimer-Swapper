@@ -7,7 +7,7 @@ ffs, please don't sell this. I posted it for free so keep it that way. If you ge
 Use this at your own descretion. I've only used this on test accounts and nothing high-end. Although, it should get the job done.<br>
 
 Proxies are required for this to work properly. **Rotating and Residential are recommended.** <br>
-I will keep the <a href="https://raw.githubusercontent.com/itsunderscores/Instagram-Auto-Claimer-Swapper/main/proxies.txt">proxies</a> file updated with fresh proxies for those who don't have access HQ proxies.
+I will keep the <a target="_blank" href="https://raw.githubusercontent.com/itsunderscores/Instagram-Auto-Claimer-Swapper/main/proxies.txt">proxies</a> file updated with fresh proxies for those who don't have access HQ proxies.
 
 
 The program has three different settings. All which are currently functioning as of 12/11/2021.<br>
