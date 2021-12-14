@@ -139,6 +139,14 @@ def login(username, password):
 		pass
 
 	try:
+		if loadjson["message"] == "challenge_required":
+			print(YELLOW+"[!] Account is most likely locked #2. Cannot sign in: " + username)
+			bad = True
+			return "0"
+	except:
+		pass
+
+	try:
 		if loadjson["error_type"] == "ip_block":
 			print(CRED+ "[!] This IP has been blocked.")
 			bad = True
@@ -178,6 +186,7 @@ def logintotheaccounts():
 				login(username, password)
 			except:
 				print(CRED+"[!] Something went wrong while logging you in.")
+	print(CGREEN + "[>] Finished logging in.")
 
 #######################################################################
 
@@ -286,7 +295,6 @@ def loadContents(fileName, delay, timeout):
 						proxies = {
 						    "http": getproxy('proxies.txt')
 						}
-						# FIX THIS , FINE A BETTER WAY TO SEE IF AN ACCOUNT IS UNAVAILABLE!!!!!
 						url2 = "https://www.instagram.com/" + username + "/"
 						grab2 = requests.get(url2, headers=getheaders, timeout=timeout, proxies=proxies)
 						first_response2 = grab2.content
@@ -322,7 +330,6 @@ def loadContents(fileName, delay, timeout):
 					except requests.exceptions.Timeout:
 						print(CRED + "[>] Request timed out.")
 
-					time.sleep(5)
 					try:
 						if snipeready == True:
 							proxies = {
@@ -379,6 +386,8 @@ def loadContents(fileName, delay, timeout):
 							pass
 					except:
 						print(CRED + "[>] Something went wrong while claiming username.")
+					
+					time.sleep(delay)
 
 
 # Multi-thread depending on how many accounts we have (Turbo Option)
