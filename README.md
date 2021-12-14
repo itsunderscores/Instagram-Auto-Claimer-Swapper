@@ -1,4 +1,4 @@
-# Instagram Turbo / Auto Claimer / Swapper
+## Instagram Turbo / Auto Claimer / Swapper
 For fuck sakes, please don't sell this. IT'S FREE so keep it that way. If you genuinely sell this, you're a piece of shit.
 
 Use this at your own descretion. I've only used this on test accounts and nothing high-end. Although, it should get the job done.
@@ -20,7 +20,7 @@ If you need helping swapping or cannot get this **simple** program working. Feel
 - Autoclaimer/Turbo has been fixed, had a bug
 - Detects certain error messages while logging in
 
-# Videos
+## Videos
 Auto Claimer/Turbo Example: https://youtu.be/fjr4wn9BY7k
 
 Swapper Example: https://www.youtube.com/watch?v=OhSDkKA_HAw
