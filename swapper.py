@@ -439,6 +439,7 @@ def verifyaccount(username, type):
 			sessionid = find_between(line, "sessionid=", " for")
 
 	cookie = "csrftoken=" + csrf + ";mid=" + mid + ";ds_user_id=" + ds_user_id + ";sessionid=" + sessionid
+	print(cookie)
 
 	getheaders={
 		"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0", 
@@ -574,13 +575,17 @@ def changeusername1(username, newusername, type):
 		try:
 			if data['status'] == "ok":
 				print(CGREEN + "[>] Successfully changed name to " + newusername)
-				sniped.append("1")
+				if type == "2":
+					claimed.append("1")
+				else:
+					print("")
 				break;
 			else:
 				if data['message']['errors'][0] == "This username isn't available. Please try another.":
 					print(CRED + "[>] This username is not available.")
 				else:
 					if data['status'] == "fail":
+						print(send.text)
 						print(CRED + "[>] Instagram returned fail.")
 					else:
 						if data['message'] == "Please wait a few minutes before you try again.":
@@ -668,14 +673,22 @@ def swapper():
 			th.start()
 		th.join()
 
+		#time.sleep(10)
+
+		# Change username of first account to second account username?
+		#for x in range(int(1)):
+		#	th = threading.Thread(target=changeusername1, args=(firstaccountusername, firstaccountusername, "1"))
+		#	th.start()
+		#th.join()
+
 		#print(CGREEN + "")
 
 		#changeusername1(secondaccountusername, firstaccountusername, "2")
 
 	else:
 		print(CRED+"[>] One of the accounts are not good to use.")
-		print(YELLOW+"[>] First account ready: " + firstaccount)
-		print(YELLOW+"[>] Second account ready: " + secondaccount)
+		print(YELLOW+"[>] First account ready: " + str(firstaccount))
+		print(YELLOW+"[>] Second account ready: " + str(secondaccount))
 	exit()
 
 ############################
