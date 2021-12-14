@@ -35,6 +35,7 @@ if(version in check.text):
 else:
 	print("This version is currently out of date and is recommended you download the updated one.")
 	print("https://github.com/itsunderscores/Instagram-Auto-Claimer-Swapper")
+	print(check)
 	exit()
 
 
