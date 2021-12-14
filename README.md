@@ -13,8 +13,9 @@ If you need helping swapping or cannot get this **simple** program working. Feel
 
 - https://discord.gg/vG5Rz9dASx
 
-## 12/13/21 Update v2.1
+## 12/13/21 Update v2.2
 
+- Fixed another bug in the swapper.
 - Multiple proxies are now supported. Place proxies in **proxies.txt**
 - Swapper is now multi-threaded and claims faster
 - Autoclaimer/Turbo has been fixed, had a bug
