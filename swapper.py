@@ -28,7 +28,7 @@ WHITE   = '\033[37m'
 RESET   = '\033[39m'
 
 # Checking if program is up-to-date
-version = "2.3"
+version = "2.4"
 check = requests.get(url = "https://raw.githubusercontent.com/itsunderscores/Instagram-Auto-Claimer-Swapper/main/version.txt")
 if(version in check.text):
 	pass
