@@ -1,5 +1,5 @@
 ## Instagram Turbo / Auto Claimer / Swapper
-Version: **2.3**<br>
+Version: **2.5**<br>
 Last Update: **12/13/2021**<br>
 <hr>
 
@@ -25,6 +25,10 @@ https://discord.gg/vG5Rz9dASx
 - FREE!
 
 <hr>
+
+**Change Log**: 12/14/21 v2.5
+- Option to use proxies added. (Recommended to use proxies when Turbo/Autoclaiming)
+- Multiple bug fixes with login
 
 **Change Log**: 12/13/21 v2.3
 - Turbo/Autoclaimer will continue claiming (if enough accounts are loaded) after it has claimed a username already.
