@@ -4,6 +4,10 @@ Last Update: **12/13/2021**<br>
 ffs, please don't sell this. I posted it for free so keep it that way. If you genuinely sell this, you're a piece of shit
 <hr>
 
+Auto Claimer/Turbo Example: https://youtu.be/fjr4wn9BY7k
+
+Swapper Example: https://www.youtube.com/watch?v=OhSDkKA_HAw
+
 Use this at your own descretion. I've only used this on test accounts and nothing high-end. Although, it should get the job done.<br>
 
 Proxies are required for this to work properly. **Rotating and Residential are recommended.** <br>
@@ -26,11 +30,6 @@ https://discord.gg/vG5Rz9dASx
 - Swapper is now multi-threaded and claims faster
 - Autoclaimer/Turbo has been fixed, had a bug
 - Detects certain error messages while logging in
-
-## Videos
-Auto Claimer/Turbo Example: https://youtu.be/fjr4wn9BY7k
-
-Swapper Example: https://www.youtube.com/watch?v=OhSDkKA_HAw
 
 ## Features
 - Multi-threading
