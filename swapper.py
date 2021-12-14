@@ -439,7 +439,7 @@ def verifyaccount(username, type):
 			sessionid = find_between(line, "sessionid=", " for")
 
 	cookie = "csrftoken=" + csrf + ";mid=" + mid + ";ds_user_id=" + ds_user_id + ";sessionid=" + sessionid
-	print(cookie)
+	#print(cookie)
 
 	getheaders={
 		"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0", 
@@ -666,6 +666,15 @@ def swapper():
 			th = threading.Thread(target=changeusername1, args=(firstaccountusername, randomusername, "1"))
 			th.start()
 		th.join()
+
+		time.sleep(3)
+
+		for x in range(int(1)):
+			th = threading.Thread(target=changeusername1, args=(firstaccountusername, randomusername + "a", "1"))
+			th.start()
+		th.join()
+
+		time.sleep(5)
 
 		# Multi thread 
 		for x in range(int(3)):
