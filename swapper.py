@@ -213,7 +213,7 @@ def login(username, password):
 		pass
 
 	try:
-		if bad == False:
+		if bad == True:
 			print(CRED+"[!] Failed to login: " + username + " (" + response.text + ")")
 	except:
 		pass
