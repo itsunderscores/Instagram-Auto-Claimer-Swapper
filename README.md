@@ -6,7 +6,7 @@ Last Update: **12/13/2021**<br>
 Use this at your own descretion. I've only used this on test accounts and nothing high-end. Although, it should get the job done.<br>
 
 Auto Claimer/Turbo Example: https://youtu.be/fjr4wn9BY7k<br>
-Swapper Example: https://www.youtube.com/watch?v=OhSDkKA_HAw
+Swapper Example: https://www.youtube.com/watch?v=Kig-mcNS_Z0
 
 Proxies are required for this to work properly. **Rotating and Residential are recommended.** <br>
 I will keep the <a target="_blank" href="https://raw.githubusercontent.com/itsunderscores/Instagram-Auto-Claimer-Swapper/main/proxies.txt">proxies</a> file updated with fresh proxies for those who don't have access HQ proxies.<br>
