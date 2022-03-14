@@ -3,6 +3,11 @@ Version: **3.0**<br>
 Last Update: **03/14/2022**<br>
 <hr>
 
+Run
+```
+python main.py
+```
+
 I have recoded the entire tool to make it work a thousand times better.<br>
 Use this at your own descretion. I've only used this on test accounts and nothing high-end. Although, it should get the job done.<br>
 
