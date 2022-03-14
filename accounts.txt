@@ -1,2 +1,0 @@
-Login to the accounts go here
-Format: USER:PASS
