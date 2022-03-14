@@ -17,7 +17,7 @@ Auto Claimer/Turbo Example: https://youtu.be/fjr4wn9BY7k<br>
 Swapper Example: https://www.youtube.com/watch?v=Kig-mcNS_Z0
 
 Proxies are required for this to work properly. **Rotating and Residential are recommended.** <br>
-I will keep the <a target="_blank" href="https://raw.githubusercontent.com/itsunderscores/Instagram-Auto-Claimer-Swapper/main/proxies.txt">proxies</a> file updated with fresh proxies for those who don't have access HQ proxies.<br>
+I will keep the <a target="_blank" href="https://raw.githubusercontent.com/itsunderscores/Instagram-Auto-Claimer-Swapper/main/files/proxies.txt">proxies</a> file updated with fresh proxies for those who don't have access HQ proxies.<br>
 Before swapping a high-end account, ensure it is working with throwaway accounts first.
 
 If you need helping swapping or cannot get this **simple** program working. Feel free to contact me.<br>
@@ -51,7 +51,7 @@ https://discord.gg/vG5Rz9dASx
 - Swapper has been updated in various ways.
 - If the swap is unsuccessful due to 14 day, or other Instagram blocks, the original username will be reverted back.
 - Faster swaps and increased realiblity
-- Multiple proxies are now supported. Place proxies in **proxies.txt**
+- Multiple proxies are now supported. Place proxies in **files/proxies.txt**
 - Swapper is now multi-threaded and claims faster
 - Autoclaimer/Turbo has been fixed, had a bug
 - Detects certain error messages while logging in
@@ -66,9 +66,9 @@ Turbo/Auto-claim list of username(s).
 * Good delay per request is 3
 * Good timeout per request is 5
 
-1) Put your login accounts in file **accounts.txt** in USERNAME:PASSWORD format, and choose option 3 before continuing.
+1) Put your login accounts in file **files/accounts.txt** in USERNAME:PASSWORD format, and choose option 3 before continuing.
 
-2) It will go through the list of usernames in file **usernames.txt** and will see if the name is available.
+2) It will go through the list of usernames in file **files/turbo_usernames.txt** and will see if the name is available.
 
 <hr>
 
@@ -80,4 +80,4 @@ It will ask for the login of the first account that will be releasing the userna
 <hr>
 
 **Third Mode (Login to accounts)**<br>
-Grab required cookies from accounts in **accounts.txt** (This is required for the first mode.)
+Grab required cookies from accounts in **files/accounts.txt** (This is required for the first mode.)
