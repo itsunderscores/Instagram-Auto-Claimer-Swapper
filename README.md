@@ -1,9 +1,12 @@
 ## Instagram Turbo / Auto Claimer / Swapper
-Version: **2.5**<br>
-Last Update: **12/13/2021**<br>
+Version: **3.0**<br>
+Last Update: **03/14/2022**<br>
 <hr>
 
+I have recoded the entire tool to make it work a thousand times better.<br>
 Use this at your own descretion. I've only used this on test accounts and nothing high-end. Although, it should get the job done.<br>
+
+<hr>
 
 Auto Claimer/Turbo Example: https://youtu.be/fjr4wn9BY7k<br>
 Swapper Example: https://www.youtube.com/watch?v=Kig-mcNS_Z0
@@ -25,6 +28,14 @@ https://discord.gg/vG5Rz9dASx
 - FREE!
 
 <hr>
+
+**Change Log**: 03/14/21 v3
+- Full recode
+- Added more login checks
+- Turbo has been improved
+- Swapper has been improved
+- If swap is unsuccessfuly, original username will be reverted back
+- Automatically installs pip requirements if you've never ran the program before
 
 **Change Log**: 12/14/21 v2.5
 - Option to use proxies added. (Recommended to use proxies when Turbo/Autoclaiming)
