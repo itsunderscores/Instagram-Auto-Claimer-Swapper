@@ -55,7 +55,7 @@ def load_claim_account(account, proxy):
 		"TE": "trailers",
 	}
 	if proxy == "true":
-		proxy = { "http" : "http://" + functions.getproxy('files/proxies.txt') }
+		proxy = { "http" : "http://" + functions.getproxy('files/proxies.txt'), "https": "http://" + functions.getproxy('files/proxies.txt')  }
 	else:
 		proxy = { "http" : ""  }
 
@@ -195,7 +195,7 @@ def check_accounts(account, delay, timeout, proxy):
 			}
 
 			if proxy == "true":
-				proxy = { "http" : "http://" + functions.getproxy('files/proxies.txt') }
+				proxy = { "http" : "http://" + functions.getproxy('files/proxies.txt'), "https": "http://" + functions.getproxy('files/proxies.txt')  }
 			else:
 				proxy = { "http" : ""  }
 
