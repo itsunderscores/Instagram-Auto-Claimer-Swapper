@@ -1,5 +1,5 @@
 ## Instagram Turbo / Auto Claimer / Swapper
-Version: **3.0**<br>
+Version: **3.1**<br>
 Last Update: **03/14/2022**<br>
 <hr>
 
@@ -35,11 +35,11 @@ https://discord.gg/vG5Rz9dASx
 <hr>
 
 **Change Log**: 03/14/21 v3
-- Full recode
-- Added more login checks
-- Turbo has been improved
-- Swapper has been improved
-- If swap is unsuccessfuly, original username will be reverted back
+- Fixed proxies (sometimes did not use them)
+- Added more login checks, proxy fixed, logs to file which accounts work/failed
+- Turbo has been improved (Proxy Fixed)
+- Swapper has been improved (Proxy Fixed)
+- If swap is unsuccessful, original username will be reverted back
 - Automatically installs pip requirements if you've never ran the program before
 
 **Change Log**: 12/14/21 v2.5
