@@ -87,10 +87,17 @@ def is_not_blank(s):
 
 # Log to textfile
 def logtofile(file, text):
-	f = open(file, "w")
-	f.write(str(text)+"\n") 
-	f.close()
-	return text
+    f = open(file, "w")
+    f.write(str(text)+"\n") 
+    f.close()
+    return text
+
+# Log to textfile (append)
+def logtofile2(file, text):
+    f = open(file, "a")
+    f.write(str(text)+"\n") 
+    f.close()
+    return text
 
 def get_files(name):
     files = []
