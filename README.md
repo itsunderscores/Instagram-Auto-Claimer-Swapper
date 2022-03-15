@@ -34,28 +34,15 @@ https://discord.gg/vG5Rz9dASx
 
 <hr>
 
-**Change Log**: 03/14/21 v3
+**Change Log**: 03/14/21 v3.2
+- New Mode: Target (Attempts to claim specific handle)
 - Multi-threaded Login, checks all accounts in seconds
-- Fixed proxies (sometimes did not use them)
-- Added more login checks, proxy fixed, logs to file which accounts work/failed
-- Turbo has been improved (Proxy Fixed)
-- Swapper has been improved (Proxy Fixed)
+- Fixed proxies
+- Added more login checks, logs to file which accounts work/failed
+- Turbo has been improved
+- Swapper has been improved
 - If swap is unsuccessful, original username will be reverted back
 - Automatically installs pip requirements if you've never ran the program before
-
-**Change Log**: 12/14/21 v2.5
-- Option to use proxies added. (Recommended to use proxies when Turbo/Autoclaiming)
-- Multiple bug fixes with login
-
-**Change Log**: 12/13/21 v2.3
-- Turbo/Autoclaimer will continue claiming (if enough accounts are loaded) after it has claimed a username already.
-- Swapper has been updated in various ways.
-- If the swap is unsuccessful due to 14 day, or other Instagram blocks, the original username will be reverted back.
-- Faster swaps and increased realiblity
-- Multiple proxies are now supported. Place proxies in **files/proxies.txt**
-- Swapper is now multi-threaded and claims faster
-- Autoclaimer/Turbo has been fixed, had a bug
-- Detects certain error messages while logging in
 
 <hr>
 
