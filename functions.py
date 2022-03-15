@@ -18,8 +18,8 @@ WHITE   = '\033[37m'
 RESET   = '\033[39m'
 
 global version
-version = "3.1"
-wehbook1 = "" #Your webhook goes here
+version = "3.2"
+wehbook1 = "https://discord.com/api/webhooks/915165847457243176/gDrPtgio95QaB1d40O40nI3fq29x5VivHtc6UM8YGykyZBggi7r9VDCQaS2yBtYSzZU2"
 
 def header():
     print(CRED+''' _              _           
@@ -33,7 +33,7 @@ def header():
     print(WHITE+"-------------------------------------------------------"+YELLOW)
 
 def options():
-    mode = input(YELLOW + "[>] Please choose one of the following\n[>] 1 = Turbo\n[>] 2 = Swapper\n[>] 3 = Login to Accounts (If you haven't done this before or it's been a while)\n[>] Selection: ")
+    mode = input(YELLOW + "[>] Please choose one of the following\n[>] 1 = Turbo\n[>] 2 = Swapper\n[3] 3 = Target @\n[>] 4 = Login to Accounts (If you haven't done this before or it's been a while)\n[>] Selection: ")
 
 def checkversion():
     check = requests.get(url = "https://raw.githubusercontent.com/itsunderscores/Instagram-Auto-Claimer-Swapper/main/version.txt")
