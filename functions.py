@@ -19,7 +19,7 @@ RESET   = '\033[39m'
 
 global version
 version = "3.1"
-wehbook1 = "https://discord.com/api/webhooks/915165847457243176/gDrPtgio95QaB1d40O40nI3fq29x5VivHtc6UM8YGykyZBggi7r9VDCQaS2yBtYSzZU2"
+wehbook1 = "" #Your webhook goes here
 
 def header():
     print(CRED+''' _              _           
