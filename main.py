@@ -14,7 +14,7 @@ if __name__ == '__main__':
 	functions.clear() #Clear Screen
 	functions.checkversion() #Check Program Version
 	functions.header() #Display Header
-	mode = input(functions.YELLOW + "[>] Please choose one of the following\n[>] 1 = Autoclaimer / Turbo\n[>] 2 = Swapper\n[3] 3 = Target Handle\n[>] 4 = Login to Accounts (If you haven't done this before or it's been a while)\n[>] Selection: ")
+	mode = input(functions.YELLOW + "[>] Please choose one of the following\n[>] 1 = Autoclaimer / Turbo\n[>] 2 = Swapper\n[>] 3 = Target Handle\n[>] 4 = Login to Accounts (If you haven't done this before or it's been a while)\n[>] Selection: ")
 
 	if mode == "1":
 		print("\n")
