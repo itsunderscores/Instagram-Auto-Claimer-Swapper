@@ -1,5 +1,5 @@
 ## Instagram Turbo / Auto Claimer / Swapper
-Version: **3.1**<br>
+Version: **3.2**<br>
 Last Update: **03/14/2022**<br>
 <hr>
 
@@ -67,7 +67,7 @@ Turbo/Auto-claim list of username(s).
 * Good delay per request is 3
 * Good timeout per request is 5
 
-1) Put your login accounts in file **files/accounts.txt** in USERNAME:PASSWORD format, and choose option 3 before continuing.
+1) Put your login accounts in file **files/accounts.txt** in USERNAME:PASSWORD format, and choose option 4 before continuing.
 
 2) It will go through the list of usernames in file **files/turbo_usernames.txt** and will see if the name is available.
 
@@ -80,5 +80,15 @@ It will ask for the login of the first account that will be releasing the userna
 
 <hr>
 
-**Third Mode (Login to accounts)**<br>
+**Third Mode (Target Handle)**<br>
+Used to target a specific handle, good for swapping a handle onto a fresh account.<br>
+Make sure you are using fresh proxies for this to work.
+
+1) Put your login accounts in file **files/accounts.txt** in USERNAME:PASSWORD format, and choose option 4 before continuing.
+
+2) Place accounts from /accounts/ in /turbo_claim/ that will claim the desired handle.
+
+<hr>
+
+**Fourth Mode (Login to accounts)**<br>
 Grab required cookies from accounts in **files/accounts.txt** (This is required for the first mode.)
