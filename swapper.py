@@ -56,7 +56,7 @@ def verifyaccount(username, type, proxy):
 	try:
 
 		if proxy == "true":
-			proxy = { "http" : "http://" + functions.getproxy('files/proxies.txt') }
+			proxy = { "http" : "http://" + functions.getproxy('files/proxies.txt'), "https": "http://" + functions.getproxy('files/proxies.txt')  }
 		else:
 			proxy = { "http" : ""  }
 
@@ -168,7 +168,7 @@ def changeusername1(username, newusername, type, proxy):
 			pass
 
 		if proxy == "true":
-			proxy = { "http" : "http://" + functions.getproxy('files/proxies.txt') }
+			proxy = { "http" : "http://" + functions.getproxy('files/proxies.txt'), "https": "http://" + functions.getproxy('files/proxies.txt')  }
 		else:
 			proxy = { "http" : ""  }
 
