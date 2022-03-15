@@ -35,6 +35,7 @@ https://discord.gg/vG5Rz9dASx
 <hr>
 
 **Change Log**: 03/14/21 v3
+- Multi-threaded Login, checks all accounts in seconds
 - Fixed proxies (sometimes did not use them)
 - Added more login checks, proxy fixed, logs to file which accounts work/failed
 - Turbo has been improved (Proxy Fixed)
