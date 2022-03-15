@@ -2,6 +2,7 @@ import functions
 import requests
 import os
 import random
+import threading
 import json
 import os, sys, time
 import time as t
@@ -36,15 +37,19 @@ def login(username, password, proxy):
 		proxy = { "http" : ""  }
 
 	while True:
+		attempts = 0
+		if attempts >= 5:
+			print("[>] Could not check %s due to failing 5 times" % (username))
+			functions.logtofile2("accounts_couldnotcheck.txt", username + ":" + password)
 		try:
-			response = requests.post(url=url, headers=headers, data=data, timeout=5, proxies=proxy)
+			response = requests.post(url=url, headers=headers, data=data, timeout=10, proxies=proxy)
 			if not response.text:
 				pass
+				attempts += 1
 			else:
 				break
 		except requests.ConnectionError:
-			print("[>] Connection timed out. Proxy is probably bad.")
-			return
+			attempts += 1
 
 	cookies = response.cookies
 	bad = False
@@ -149,5 +154,7 @@ def logintotheaccounts():
 		for line in f:
 			username = line.split(':')[0]
 			password = line.split(':')[1]
-			login(username, password, proxies)
-	print(functions.CGREEN + "[>] Finished logging in.")
+			th = threading.Thread(target=login, args=(username, password, proxies))
+			th.start()
+			#login(username, password, proxies)
+	#print(functions.CGREEN + "[>] Finished logging in.")
