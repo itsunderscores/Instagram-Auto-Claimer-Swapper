@@ -56,7 +56,9 @@ Turbo/Auto-claim list of username(s).
 
 1) Put your login accounts in file **files/accounts.txt** in USERNAME:PASSWORD format, and choose option 4 before continuing.
 
-2) It will go through the list of usernames in file **files/turbo_usernames.txt** and will see if the name is available.
+2) Place accounts from /accounts/ into /turbo_claim/ to claim users. Place accounts from /accounts/ into /turbo_check/ to check the desired usernames.
+
+3) It will go through the list of usernames in file **files/turbo_usernames.txt** and will see if the name is available.
 
 <hr>
 
@@ -73,7 +75,9 @@ Make sure you are using fresh proxies for this to work.
 
 1) Put your login accounts in file **files/accounts.txt** in USERNAME:PASSWORD format, and choose option 4 before continuing.
 
-2) Place accounts from /accounts/ in /turbo_claim/ that will claim the desired handle.
+2) Place accounts from /accounts/ in /turbo_check/ that will check the desired handle.
+
+3) Place accounts from /accounts/ in /turbo_claim/ that will claim the desired handle.
 
 <hr>
 
