@@ -21,7 +21,7 @@ I will keep the <a target="_blank" href="https://raw.githubusercontent.com/itsun
 Before swapping a high-end account, ensure it is working with throwaway accounts first.
 
 If you need helping swapping or cannot get this **simple** program working. Feel free to contact me.<br>
-https://discord.gg/vG5Rz9dASx
+itsunderscores on Discord
 
 <hr>
 
